@@ -1,5 +1,5 @@
 {
-  "name": "nurse-shift-frontend",
+  "name": "nurse_shift_frontend",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",

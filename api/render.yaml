@@ -1,20 +1,22 @@
 services:
   - type: web
     name: nurse-shift-api
-    runtime: docker
+    runtime: python
     plan: free  # 本番: starter
     region: singapore  # 日本に最も近いリージョン
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "cd api && uvicorn app.main:app --host 0.0.0.0 --port 10000"
     autoDeploy: true
     healthCheckPath: /docs
     envVars:
       - key: ALLOWED_ORIGINS
         value: "*"  # デプロイ後にフロントエンドURLに変更すること
       - key: PYTHONPATH
-        value: /app
+        value: /opt/render/project/src/api
       - key: HOST
         value: 0.0.0.0
       - key: PORT
         value: 10000
+      - key: PYTHON_VERSION
+        value: "3.12.0"
 

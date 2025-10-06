@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/rules.schema.json",
+  "title": "Monthly rules",
+  "type": "object",
+  "required": ["year", "month", "leader_requirement", "forbidden_pairs"],
+  "properties": {
+    "year": { "type": "integer", "minimum": 2000 },
+    "month": { "type": "integer", "minimum": 1, "maximum": 12 },
+    "holidays": { "type": "array", "items": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" } },
+    "demand": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "day_min": { "type": "integer", "minimum": 0 },
+          "day_max": { "type": "integer", "minimum": 0 },
+          "late": { "type": "integer", "minimum": 0 },
+          "night": { "type": "integer", "minimum": 0 }
+        },
+        "required": ["day_min", "day_max", "night"]
+      }
+    },
+    "demand_defaults": {
+      "type": "object",
+      "properties": {
+        "weekday": { "$ref": "#/$defs/demandShape" },
+        "saturday_holiday": { "$ref": "#/$defs/demandShape" },
+        "sunday": { "$ref": "#/$defs/demandShape" }
+      },
+      "additionalProperties": false
+    },
+    "leader_requirement": {
+      "type": "object",
+      "properties": {
+        "weekend_holiday": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["weekend_holiday"],
+      "additionalProperties": false
+    },
+    "forbidden_pairs": {
+      "type": "object",
+      "properties": {
+        "night": { "type": "array", "items": { "type": "array", "items": { "type": "string" }, "minItems": 2, "maxItems": 2 } }
+      },
+      "additionalProperties": false
+    },
+    "person_rules": { "type": "object" }
+  },
+  "$defs": {
+    "demandShape": {
+      "type": "object",
+      "properties": {
+        "day_min": { "type": "integer", "minimum": 0 },
+        "day_max": { "type": "integer", "minimum": 0 },
+        "late": { "type": "integer", "minimum": 0 },
+        "night": { "type": "integer", "minimum": 0 }
+      },
+      "required": ["day_min", "day_max", "night"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
+
+

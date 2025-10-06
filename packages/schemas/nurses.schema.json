@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/nurses.schema.json",
+  "title": "Nurses (parsed from CSV)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "team", "leader_ok", "day_ok", "late_ok", "night_ok"],
+    "properties": {
+      "id": { "type": ["string", "number"], "pattern": "^\\d+$" },
+      "name": { "type": "string" },
+      "team": { "type": "string", "enum": ["A", "B", "ER"] },
+      "leader_ok": { "type": "boolean" },
+      "day_ok": { "type": "boolean" },
+      "late_ok": { "type": "boolean" },
+      "night_ok": { "type": "boolean" },
+      "week_max_days": { "type": ["integer", "null"], "minimum": 0 },
+      "weekend_cap": { "type": ["integer", "null"], "minimum": 0 },
+      "notes": { "type": ["string", "null"] }
+    },
+    "additionalProperties": true
+  }
+}
+
+

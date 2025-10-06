@@ -1,0 +1,52 @@
+{
+  "year": 2025,
+  "month": 10,
+  "holidays": [],
+  "leader_requirement": {
+    "weekend_holiday": ["2", "3", "4", "5", "6", "7", "15", "16", "17", "18"]
+  },
+  "forbidden_pairs": {
+    "night": [["7", "26"]]
+  },
+  "demand_defaults": {
+    "weekday": { "day_min": 11, "day_max": 14, "late": 1, "night": 3 },
+    "saturday_holiday": { "day_min": 8, "day_max": 8, "late": 0, "night": 3 },
+    "sunday": { "day_min": 7, "day_max": 7, "late": 0, "night": 3 }
+  },
+  "person_rules": {
+    "1": { "only_day": true, "holiday_off": true },
+    "2": { "only_day": true, "holiday_off": true },
+    "4": { "night_min": 4, "night_max": 6 },
+    "5": { "night_min": 4, "night_max": 6 },
+    "6": { "night_min": 4, "night_max": 6 },
+    "7": { "night_min": 4, "night_max": 6 },
+    "8": { "night_min": 4, "night_max": 6 },
+    "9": { "night_min": 4, "night_max": 6, "cannot_lead_night": true },
+    "10": { "only_day": true },
+    "11": { "night_min": 4, "night_max": 6, "cannot_lead_night": true },
+    "12": { "night_min": 2, "night_max": 2, "extra_staff": true },
+    "13": { "week_max_days": 2, "weekend_cap_per_month": 3 },
+    "14": { "only_day": true, "weekend_off": true, "fixed_hours": "09:00-17:00" },
+    "15": { "night_min": 4, "night_max": 6 },
+    "17": { "night_min": 4, "night_max": 6 },
+    "18": { "night_min": 4, "night_max": 6 },
+    "19": { "night_min": 4, "night_max": 6, "cannot_lead_night": true },
+    "21": { "night_min": 4, "night_max": 6 },
+    "22": { "night_min": 4, "night_max": 6 },
+    "20": { "night_min": 2, "night_max": 2, "weekend_off": true, "cannot_lead_night": true },
+    "23": { "week_max_days": 2, "weekend_off": true },
+    "24": { "only_day": true, "weekend_off": true, "fixed_hours": "09:00-16:30" },
+    "25": { "only_day": true, "week_max_days": 2, "fixed_hours": "09:00-13:00" },
+    "3": { "night_min": 4, "night_max": 4 },
+    "16": { "night_min": 4, "night_max": 6 },
+    "26": { "only_night": true, "night_min": 9, "night_max": 9, "extra_holidays": 1 },
+    "27": { "night_min": 4, "night_max": 6, "exclude_day_on_weekend": true, "cannot_lead_night": true },
+    "28": { "only_night": true, "night_min": 2, "night_max": 2 },
+    "29": { "only_night": true, "night_min": 2, "night_max": 2, "cannot_lead_night": true },
+    "30": { "only_night": true, "night_min": 2, "night_max": 2, "weekend_only_night": true, "cannot_lead_night": true },
+    "32": { "only_day": true, "weekend_day_only": true, "month_quota_days": 2 },
+    "33": { "only_day": true, "month_quota_days": 2 }
+  }
+}
+
+

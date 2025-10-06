@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: nurse-shift-api
+    runtime: docker
+    plan: free  # 本番: starter
+    region: singapore  # 日本に最も近いリージョン
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    healthCheckPath: /docs
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: "*"  # デプロイ後にフロントエンドURLに変更すること
+      - key: PYTHONPATH
+        value: /app
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+

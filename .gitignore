@@ -51,3 +51,4 @@ temp/
 # Production
 dist/
 build/
+.vercel

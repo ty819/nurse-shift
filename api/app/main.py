@@ -18,11 +18,17 @@ from app.validation import load_and_validate
 
 app = FastAPI(title="Nurse Shift Optimizer", version="0.2.0")
 
-origins = os.environ.get("ALLOWED_ORIGINS", "*")
+origins_str = os.environ.get("ALLOWED_ORIGINS", "*")
+if origins_str == "*":
+    allowed_origins = ["*"]
+else:
+    # カンマ区切りで複数のオリジンを許可
+    allowed_origins = [o.strip() for o in origins_str.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[o.strip() for o in origins.split(",")] if origins != "*" else ["*"],
-    allow_credentials=True,
+    allow_origins=allowed_origins,
+    allow_credentials=True if allowed_origins != ["*"] else False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

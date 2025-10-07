@@ -10,7 +10,7 @@ services:
     healthCheckPath: /docs
     envVars:
       - key: ALLOWED_ORIGINS
-        value: "*"  # デプロイ後にフロントエンドURLに変更すること
+        value: "https://nurse-shift-app.vercel.app,https://nurse-shift-app-*.vercel.app"
       - key: PYTHONPATH
         value: /opt/render/project/src/api
       - key: HOST
